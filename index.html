@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Editoor AI - Background Remover</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav>
+    <h2>⬢ Editoor AI</h2>
+    <div>
+      <a>Home</a>
+      <a>Tools</a>
+      <a>About</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="badge">✨ 100% FREE AI BACKGROUND REMOVER</div>
+
+    <h1>Remove Backgrounds<br>In Seconds.</h1>
+
+    <p>No Sign-up Required • No Watermark • High Quality PNG • Powered by AI</p>
+
+    <label class="upload-box" for="imageInput">
+      <input type="file" id="imageInput" accept="image/*" hidden>
+
+      <div id="uploadContent">
+        <div class="upload-icon">☁️</div>
+        <h3>Drag & Drop<br>Image Here</h3>
+        <span>or click to upload</span>
+        <small>JPG • PNG • WEBP</small>
+      </div>
+
+      <div class="preview-wrapper">
+        <img id="previewImage" alt="">
+        <button type="button" id="removeImageBtn">×</button>
+      </div>
+    </label>
+
+    <button id="removeBtn">🚀 Remove Background</button>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

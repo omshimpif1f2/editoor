@@ -92,7 +92,6 @@ removeBtn.addEventListener("click", async () => {
   try {
     const response = await fetch("/api/remove-bg", {
       method: "POST",
-      },
       body: formData
     });
 

@@ -6,6 +6,23 @@ const removeBtn = document.getElementById("removeBtn");
 const removeImageBtn = document.getElementById("removeImageBtn");
 const previewWrapper = document.querySelector(".preview-wrapper");
 const uploadBox = document.querySelector(".upload-box");
+const messageBox = document.getElementById("messageBox");
+
+function showMessage(type,message){
+
+    messageBox.className="";
+
+    messageBox.classList.add(type);
+
+    messageBox.innerHTML=message;
+
+    messageBox.classList.add("show");
+
+    setTimeout(()=>{
+        messageBox.classList.remove("show");
+    },4000);
+
+}
 
 let selectedFile = null;
 let resultUrl = null;

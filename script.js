@@ -126,8 +126,10 @@ removeBtn.addEventListener("click", async () => {
     removeBtn.innerText = "⬇ Download PNG";
   } catch (error) {
     console.error(error);
-    alert("Error: check API key or credits.");
-    removeBtn.innerText = "🚀 Remove Background";
+    showMessage(
+"error",
+"😕 We couldn't detect a clear subject in this image.<br><br>Try uploading a photo with one main person or object."
+);;
   }
 
   removeBtn.disabled = false;

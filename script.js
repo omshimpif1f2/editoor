@@ -120,6 +120,10 @@ removeBtn.addEventListener("click", async () => {
     }
 
     const blob = await response.blob();
+      showMessage(
+    "success",
+    "✅ Background removed successfully!"
+);
     resultUrl = URL.createObjectURL(blob);
 
     previewImage.src = resultUrl;

@@ -1,4 +1,3 @@
-
 const imageInput = document.getElementById("imageInput");
 const previewImage = document.getElementById("previewImage");
 const uploadContent = document.getElementById("uploadContent");
@@ -8,31 +7,24 @@ const previewWrapper = document.querySelector(".preview-wrapper");
 const uploadBox = document.querySelector(".upload-box");
 const messageBox = document.getElementById("messageBox");
 
-function showMessage(type,message){
-
-    messageBox.className="";
-
-    messageBox.classList.add(type);
-
-    messageBox.innerHTML=message;
-
-    messageBox.classList.add("show");
-
-    setTimeout(()=>{
-        messageBox.classList.remove("show");
-    },4000);
-
-}
-
 let selectedFile = null;
 let resultUrl = null;
 
+function showMessage(type, message) {
+  messageBox.className = "";
+  messageBox.classList.add(type);
+  messageBox.innerHTML = message;
+  messageBox.classList.add("show");
+
+  setTimeout(() => {
+    messageBox.classList.remove("show");
+  }, 4000);
+}
+
 function showImage(file) {
   if (!file || !file.type.startsWith("image/")) {
-    showMessage(
-"error",
-"❌ Please upload an image first."
-);
+    showMessage("error", "❌ Please upload a valid JPG, PNG, or WEBP image.");
+    return;
   }
 
   selectedFile = file;
@@ -91,13 +83,13 @@ removeBtn.addEventListener("click", async () => {
   if (resultUrl) {
     const a = document.createElement("a");
     a.href = resultUrl;
-    a.download = "editoor-ai-bg-removed.png";
+    a.download = "vexel-bg-removed.png";
     a.click();
     return;
   }
 
   if (!selectedFile) {
-    alert("Please upload an image first.");
+    showMessage("error", "❌ Please upload an image first.");
     return;
   }
 
@@ -115,25 +107,25 @@ removeBtn.addEventListener("click", async () => {
     });
 
     if (!response.ok) {
-      const errorText = await response.text();
-      throw new Error(errorText);
+      throw new Error(await response.text());
     }
 
     const blob = await response.blob();
-      showMessage(
-    "success",
-    "✅ Background removed successfully!"
-);
     resultUrl = URL.createObjectURL(blob);
 
     previewImage.src = resultUrl;
     removeBtn.innerText = "⬇ Download PNG";
+
+    showMessage("success", "✅ Background removed successfully!");
   } catch (error) {
     console.error(error);
+
     showMessage(
-"error",
-"😕 We couldn't detect a clear subject in this image.<br><br>Try uploading a photo with one main person or object."
-);;
+      "error",
+      "😕 We couldn't detect a clear subject in this image.<br><br>Try uploading a photo with one main person or object."
+    );
+
+    removeBtn.innerText = "🚀 Remove Background";
   }
 
   removeBtn.disabled = false;

@@ -316,3 +316,29 @@ p {
     border:1px solid rgba(59,130,246,.45);
     color:#bfdbfe;
 }
+  #messageBox{
+    position:fixed;
+    top:20px;
+    left:50%;
+    transform:translateX(-50%) translateY(-80px);
+
+    min-width:320px;
+    max-width:500px;
+
+    padding:18px 22px;
+
+    border-radius:18px;
+
+    text-align:center;
+
+    opacity:0;
+
+    transition:.35s ease;
+
+    z-index:999999;
+}
+
+#messageBox.show{
+    opacity:1;
+    transform:translateX(-50%) translateY(0);
+}

@@ -29,8 +29,10 @@ let resultUrl = null;
 
 function showImage(file) {
   if (!file || !file.type.startsWith("image/")) {
-    alert("Please upload a valid image file.");
-    return;
+    showMessage(
+"error",
+"❌ Please upload an image first."
+);
   }
 
   selectedFile = file;
